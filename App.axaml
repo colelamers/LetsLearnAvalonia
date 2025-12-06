@@ -1,0 +1,23 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="FirstApp.App"
+             xmlns:local="using:FirstApp"
+             Design.DesignWidth="300" Design.DesignHeight="300">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Styles/FirstApp.axaml"/>
+        <!--Below style is required for datagrids-->
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+    </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="MyCustomBrush" Color="LightCoral"/>
+    </Application.Resources>
+
+</Application>

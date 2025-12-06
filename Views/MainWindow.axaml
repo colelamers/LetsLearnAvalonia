@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FirstApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
+        Width="500" Height="200"
+        x:Class="FirstApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FirstApp">
+
+    <Grid Background="{DynamicResource MyCustomBrush}" ColumnDefinitions="*, *" 
+        RowDefinitions="*, *">
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <TextBlock Text="{Binding StatusMessage.Message}" FontSize="20" Margin="0,0,10,0"/>
+            <Button Content="Top Button" Command="{Binding Click_btnTop}"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <TextBlock Text="{Binding OtherMessage.Message}!" FontSize="20" Margin="0,0,10,0"/>
+            <Button Content="Bottom Button" Command="{Binding Click_btnBottom}"/>
+        </StackPanel>
+        
+</Grid>
+</Window>
