@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace FirstApp;
+namespace LetsLearnAvalonia;
 
 sealed class Program
 {

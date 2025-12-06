@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using FirstApp.Models;
+using LetsLearnAvalonia.Models;
 
-namespace FirstApp.ViewModels;
+namespace LetsLearnAvalonia.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
 {

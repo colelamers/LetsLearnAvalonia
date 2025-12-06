@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace FirstApp.Models;
+namespace LetsLearnAvalonia.Models;
 
 /// <summary>
 /// A simple model class that holds a status message string. This is an example
