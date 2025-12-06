@@ -4,24 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
-        Width="500" Height="200"
+        Width="1024" Height="600"
         x:Class="LetsLearnAvalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/images/icon.ico"
         Title="LetsLearnAvalonia">
 
-    <Grid Background="{DynamicResource MyCustomBrush}" ColumnDefinitions="*, *" 
-        RowDefinitions="*, *">
-        
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
-            <TextBlock Text="{Binding StatusMessage.Message}" FontSize="20" Margin="0,0,10,0"/>
-            <Button Content="Top Button" Command="{Binding Click_btnTop}"/>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
-            <TextBlock Text="{Binding OtherMessage.Message}!" FontSize="20" Margin="0,0,10,0"/>
-            <Button Content="Bottom Button" Command="{Binding Click_btnBottom}"/>
-        </StackPanel>
-        
-</Grid>
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
+        <!-- Borders are the generic wrappers around stack panels since 
+        stack panels do not have that and they fit to their parent.-->
+        <Border Grid.Column="0" Padding="20" 
+        Background="{DynamicResource PrimaryGradientBackground}">
+            <Grid RowDefinitions="*, Auto">
+                <StackPanel Grid.Row="0">
+                    <Image Source="{SvgImage /Assets/images/logo.svg}" Width="220"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>
