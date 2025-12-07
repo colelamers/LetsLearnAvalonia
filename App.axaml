@@ -17,11 +17,16 @@
     </Application.Styles>
 
     <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryForeground" Color="#CFCFCF"/>
         <SolidColorBrush x:Key="PrimaryBackground" Color="#14172D"/>
         <LinearGradientBrush x:Key="PrimaryGradientBackground" StartPoint="0%,0%" EndPoint="100%,0%">
             <GradientStop Offset="0" Color="#111214" />
             <GradientStop Offset="1" Color="#151E3E"/>
         </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="PrimaryHoverBackground" Color="#333B5A"/>
+        <SolidColorBrush x:Key="PrimaryHoverForeground" Color="#FFFFFF"/>
+
     </Application.Resources>
 
 </Application>
