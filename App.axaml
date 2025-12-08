@@ -27,6 +27,14 @@
         <SolidColorBrush x:Key="PrimaryHoverBackground" Color="#333B5A"/>
         <SolidColorBrush x:Key="PrimaryHoverForeground" Color="#FFFFFF"/>
 
+        <FontFamily x:Key="PhosphorFill">/Assets/Fonts/Phosphor-Fill.ttf#Phosphor-Fill</FontFamily>
+        <FontFamily x:Key="Phosphor">/Assets/Fonts/Phosphor.ttf#Phosphor</FontFamily>
+        <!-- NOTE: The "#Noto Sans JP" is the annotation for the EXACT NAME of
+             the font used. If you have multiple that have the same name, this
+             is a requirement to ensure that when you specify a file path font,
+             you must also explicitly state the name afterward so it knows which
+             one to use or something.-->
+        <FontFamily x:Key="NotoSansJP">/Assets/Fonts/NotoSansJP.ttf#Noto Sans JP</FontFamily>
     </Application.Resources>
 
 </Application>
