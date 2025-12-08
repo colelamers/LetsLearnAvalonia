@@ -5,6 +5,7 @@
              Design.DesignWidth="300" Design.DesignHeight="300">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
+
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
@@ -25,6 +26,7 @@
         </LinearGradientBrush>
 
         <SolidColorBrush x:Key="PrimaryHoverBackground" Color="#333B5A"/>
+        <SolidColorBrush x:Key="PrimaryActiveBackground" Color="#6633dd"/>
         <SolidColorBrush x:Key="PrimaryHoverForeground" Color="#FFFFFF"/>
 
         <FontFamily x:Key="PhosphorFill">/Assets/Fonts/Phosphor-Fill.ttf#Phosphor-Fill</FontFamily>
