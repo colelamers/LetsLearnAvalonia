@@ -90,7 +90,9 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <Button Classes="transparent" Grid.Row="1">
+                <Button Classes="transparent" Grid.Row="1"
+                        Classes.active="{Binding SettingsPageIsActive}"
+                        Command="{Binding GoToSettingsCommand}">
                     <Label Classes="icon-only" Content="&#xE272;"/>
                 </Button>
             </Grid>

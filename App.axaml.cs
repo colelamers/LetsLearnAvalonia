@@ -6,7 +6,9 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using LetsLearnAvalonia.ViewModels;
 using LetsLearnAvalonia.Views;
-
+using System.Security.Authentication.ExtendedProtection;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 namespace LetsLearnAvalonia;
 
 public partial class App : Application
@@ -18,6 +20,17 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        ServiceCollection collection = new ServiceCollection();
+        collection.AddTransient<MainWindowViewModel>();
+        collection.AddTransient<HomePageViewModel>();
+        collection.AddTransient<ProcessPageViewModel>();
+        collection.AddTransient<ActionsPageViewModel>();
+        collection.AddTransient<MacrosPageViewModel>();
+        collection.AddTransient<ReporterPageViewModel>();
+        collection.AddTransient<HistoryPageViewModel>();
+        collection.AddTransient<SettingsPageViewModel>();
+
+        ServiceProvider services = collection.BuildServiceProvider();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -25,7 +38,7 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = services.GetRequiredService<MainWindowViewModel>()
             };
         }
 

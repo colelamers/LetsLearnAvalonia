@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 using Avalonia.Svg.Skia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -24,6 +25,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [NotifyPropertyChangedFor(nameof(MacrosPageIsActive))]
     [NotifyPropertyChangedFor(nameof(ReporterPageIsActive))]
     [NotifyPropertyChangedFor(nameof(HistoryPageIsActive))]
+    [NotifyPropertyChangedFor(nameof(SettingsPageIsActive))]
     private ViewModelBase _currentPage;
     public bool HomePageIsActive => CurrentPage == _homePage;
     public bool ProcessPageIsActive => CurrentPage == _processPage;
@@ -31,15 +33,31 @@ public partial class MainWindowViewModel : ViewModelBase
     public bool MacrosPageIsActive => CurrentPage == _macrosPage;
     public bool ReporterPageIsActive => CurrentPage == _reporterPage;
     public bool HistoryPageIsActive => CurrentPage == _historyPage;
-    private readonly HomePageViewModel _homePage = new();
-    private readonly ProcessPageViewModel _processPage = new();
-    private readonly ActionsPageViewModel _actionsPage = new();
-    private readonly MacrosPageViewModel _macrosPage = new();
-    private readonly ReporterPageViewModel _reporterPage = new();
-    private readonly HistoryPageViewModel _historyPage = new();
+    public bool SettingsPageIsActive => CurrentPage == _settingsPage;
+    private readonly HomePageViewModel _homePage;
+    private readonly ProcessPageViewModel _processPage;
+    private readonly ActionsPageViewModel _actionsPage;
+    private readonly MacrosPageViewModel _macrosPage;
+    private readonly ReporterPageViewModel _reporterPage;
+    private readonly HistoryPageViewModel _historyPage;
+    private readonly SettingsPageViewModel _settingsPage;
 
-    public MainWindowViewModel()
+    // This HomePageViewModel is a dependency injection from th eApp.axaml.cs
+    // collection.AddSingleton<HomePageViewModel>(); By adding that service,
+    // item, we can then have it injected here.
+    public MainWindowViewModel(
+        HomePageViewModel homePage, ProcessPageViewModel processPage, 
+        ActionsPageViewModel actionsPage, MacrosPageViewModel macrosPage, 
+        ReporterPageViewModel reporterPage, HistoryPageViewModel historyPage,
+        SettingsPageViewModel settingsPage)
     {
+        _homePage = homePage;
+        _processPage = processPage;
+        _actionsPage = actionsPage;
+        _macrosPage = macrosPage;
+        _reporterPage = reporterPage;
+        _historyPage = historyPage;
+        _settingsPage = settingsPage;
         CurrentPage = _homePage;
     }
 
@@ -66,4 +84,7 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [RelayCommand]
     private void GoToHistory() => CurrentPage = _historyPage;
+
+    [RelayCommand]
+    private void GoToSettings() => CurrentPage = _settingsPage;
 }
