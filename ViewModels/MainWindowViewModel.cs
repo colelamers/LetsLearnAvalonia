@@ -15,7 +15,6 @@ public partial class MainWindowViewModel : ViewModelBase
     private string _title = "Lets Learn Avalonia!";
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(SideMenuImage))]
     private bool _sideMenuExpanded = false;
 
     [ObservableProperty]
@@ -26,12 +25,6 @@ public partial class MainWindowViewModel : ViewModelBase
     [NotifyPropertyChangedFor(nameof(ReporterPageIsActive))]
     [NotifyPropertyChangedFor(nameof(HistoryPageIsActive))]
     private ViewModelBase _currentPage;
-    public SvgImage SideMenuImage => new SvgImage 
-    {
-        Source = SvgSource.Load($"avares://{nameof(LetsLearnAvalonia)}/Assets/images" +
-         $"/{(SideMenuExpanded ? "logo" : "icon")}.svg"),
-    };
-    
     public bool HomePageIsActive => CurrentPage == _homePage;
     public bool ProcessPageIsActive => CurrentPage == _processPage;
     public bool ActionsPageIsActive => CurrentPage == _actionsPage;
@@ -47,7 +40,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        CurrentPage = _processPage;
+        CurrentPage = _homePage;
     }
 
     [RelayCommand]
