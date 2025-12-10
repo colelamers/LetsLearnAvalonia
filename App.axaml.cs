@@ -1,14 +1,15 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using LetsLearnAvalonia.ViewModels;
 using LetsLearnAvalonia.Views;
-using System.Security.Authentication.ExtendedProtection;
 using Microsoft.Extensions.DependencyInjection;
+using LetsLearnAvalonia.Factories;
 using System;
+using LetsLearnAvalonia.Data;
+
 namespace LetsLearnAvalonia;
 
 public partial class App : Application
@@ -29,6 +30,28 @@ public partial class App : Application
         collection.AddTransient<ReporterPageViewModel>();
         collection.AddTransient<HistoryPageViewModel>();
         collection.AddTransient<SettingsPageViewModel>();
+
+        // NOTE: The only reason in the tutorial he could use "name" instead of
+        // pageName is because that is a new C# 9 feature. We have to use 
+        // "pageName" here. I would never use that feature anyway because it
+        // abstracts WAY too much away and you have no idea in context what name
+        // is because it exists nowhere else in the code but here.
+        // todo 2; I absolutely want to refactor the DI code so that not only
+        // is it readable, but you actually can debug it too.
+        collection.AddSingleton<Func<ApplicationPageNames, PageViewModel>>(
+            x => pageName => pageName switch
+            {
+                ApplicationPageNames.Home => x.GetRequiredService<HomePageViewModel>(),
+                ApplicationPageNames.Process => x.GetRequiredService<ProcessPageViewModel>(),
+                ApplicationPageNames.Actions => x.GetRequiredService<ActionsPageViewModel>(),
+                ApplicationPageNames.Macros => x.GetRequiredService<MacrosPageViewModel>(),
+                ApplicationPageNames.Reporter => x.GetRequiredService<ReporterPageViewModel>(),
+                ApplicationPageNames.History => x.GetRequiredService<HistoryPageViewModel>(),
+                ApplicationPageNames.Settings => x.GetRequiredService<SettingsPageViewModel>(),
+                _ => throw new ArgumentException("The PageName does not have a ViewModel.", nameof(pageName)),
+            });
+
+        collection.AddSingleton<PageFactory>();
 
         ServiceProvider services = collection.BuildServiceProvider();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
