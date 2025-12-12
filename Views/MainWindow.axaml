@@ -4,21 +4,21 @@
         xmlns:view="using:LetsLearnAvalonia.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="200"
-        Width="720" Height="480"
+        mc:Ignorable="d"
+        MinWidth="1400" MinHeight="900"
+        Width="1400" Height="900"
         x:Class="LetsLearnAvalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/images/icon.ico"
         Title="LetsLearnAvalonia">
 
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
     <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
 
-    <ContentControl Grid.Column="1" Content="{Binding CurrentPage}">
-        <view:HomePageView />
-        </ContentControl>
-
-
-
+        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"/>
         <!-- Borders are the generic wrappers around stack panels since 
         stack panels do not have that and they fit to their parent.-->
         <Border Grid.Column="0" Padding="20" 
