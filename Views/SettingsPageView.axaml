@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:LetsLearnAvalonia.ViewModels"
+             xmlns:c="clr-namespace:LetsLearnAvalonia.Controls"
              mc:Ignorable="d" 
              Background="{DynamicResource PrimaryBackground}"
              Foreground="{DynamicResource Foreground}"
@@ -27,14 +28,10 @@
               <StackPanel>
                 <Label Content="General"/>
                 <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto, Auto">
-                  <!-- Release License -->
+    <!-- Release License -->
                   <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Remove license of application from this machine and release the license back to the server ready to be transferred to another machine."/>
-                  <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Classes="icon" Content="&#xE2FE;"/>
-                        <Label Classes="noto" Content="Release License" />
-                    </StackPanel>
-                  </Button>
+                  <c:IconButton IconText="&#xe2fe;" Grid.Row="0" Grid.Column="1" 
+                  HorizontalAlignment="Stretch" Content="Release License"></c:IconButton>
 
                   <!-- Skip files -->
                   <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Skip files if only Open, Save (Optional), and Close are valid actions."/>
@@ -54,10 +51,7 @@
                     <TextBlock TextWrapping="Wrap" Text="Add or remove the locations to search for reporter templates, macros, actions, and othe rcustom files or templates."/>
                     <TextBlock TextWrapping="Wrap" Text="* All sub-directories will be searched automatically."/>
                   </StackPanel>
-                  <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Classes="noto" Content="+ Folder" />
-                    </StackPanel>
+                  <Button Grid.Row="0" Grid.Column="1" Content="+ Folder" HorizontalAlignment="Stretch">
                   </Button>
                 </Grid>
                 <ListBox ItemsSource="{Binding LocationPaths}"/>
@@ -90,19 +84,11 @@
                       <TextBox Grid.Column="2" />
                   </Grid>
                   <StackPanel Orientation="Horizontal">
-                    <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                      <StackPanel Orientation="Horizontal">
-                          <Label Classes="icon" Content="&#xE23E;"/>
-                          <Label Classes="noto" Content="Login" />
-                      </StackPanel>
-                    </Button>
+                    <c:IconButton Grid.Row="0"  Grid.Column="1" IconText="&#xE23E;" Content="Login" HorizontalAlignment="Stretch">
+                    </c:IconButton>
+                    <c:IconButton Grid.Row="0"  Grid.Column="1" IconText="&#xE094;" Content="Refresh vault" HorizontalAlignment="Stretch">
+                    </c:IconButton>
 
-                    <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                      <StackPanel Orientation="Horizontal">
-                          <Label Classes="icon" Content="&#xE094;"/>
-                          <Label Classes="noto" Content="Refresh vault" />
-                      </StackPanel>
-                    </Button>
                   </StackPanel>
                   <Label Content="Connection Established" Margin="0 0 0 0"></Label>
                   
@@ -116,24 +102,12 @@
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 10">
 
-                      <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Classes="icon" Content="&#xec54;"/>
-                            <Label Classes="noto" Content="Clear Cache" />
-                        </StackPanel>
-                      </Button>
-                        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Classes="icon" Content="&#xe5de;"/>
-                            <Label Classes="noto" Content="Export Cache" />
-                        </StackPanel>
-                      </Button>
-                      <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Classes="icon" Content="&#xe20c;"/>
-                            <Label Classes="noto" Content="Import Cache" />
-                        </StackPanel>
-                      </Button>
+                      <c:IconButton Grid.Row="0"  Grid.Column="1" IconText="&#xec54;" Content="Clear Cache" HorizontalAlignment="Stretch">
+                      </c:IconButton>
+                        <c:IconButton Grid.Row="0" Grid.Column="1" IconText="&#xe5de;" Content="Export Cache" HorizontalAlignment="Stretch">
+                      </c:IconButton>
+                      <c:IconButton Grid.Row="0" Grid.Column="1" IconText="&#xe20c;" Content="Import Cache" HorizontalAlignment="Stretch">
+                      </c:IconButton>
 
                     </StackPanel>
                 </StackPanel>

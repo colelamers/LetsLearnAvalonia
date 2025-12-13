@@ -1,46 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-  <Style Selector="Button">
-    <Setter Property="FontSize" Value="20"/>
-    <!--NOTE: You can remove the immediate below item. This was done in the
-    video because his font had a bug that was offset improperly-->
-    <!--<Setter Property="Padding" Value="10, 12, 13, 5"/>-->
-    <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"/>
-  </Style>
-
-  <!--NOTE: This works in conjuction with the rednerdransform below upon hover
-      it increases the size. Can allso be done with a 
-      <Setter Property="RenderTransform" Value="scale(1)"/>-->
-  <Style Selector="Button /template/ ContentPresenter">
-    <Setter Property="RenderTransform">
-      <ScaleTransform ScaleX="1" ScaleY="1"/>
-    </Setter>
-    <Setter Property="Transitions">
-      <Transitions>
-        <BrushTransition Property="Foreground" Duration="0:0:0.1"/>
-        <BrushTransition Property="Background" Duration="0:0:0.1"/>
-        <TransformOperationsTransition Property="RenderTransform"  Duration="0:0:0.1"/>
-      </Transitions>
-    </Setter>
-  </Style>
-
-  <Style Selector="Button.active /template/ ContentPresenter">
-    <Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
-  </Style>
-
-  <Style Selector="Button.transparent:pointerover /template/ ContentPresenter">
-    <Setter Property="RenderTransform">
-      <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
-    </Setter>
-  </Style>
-
-  <Style Selector="Button:pointerover /template/ ContentPresenter">
-    <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource PrimaryHoverBackground}"/>
-  </Style>
-
   <Style Selector="Window">
     <Setter Property="FontFamily" Value="{DynamicResource NotoSansJP}"/>
   </Style>
@@ -60,12 +20,54 @@
     <Setter Property="FontSize" Value="18"/>
   </Style>
 
-  <Style Selector="Button.transparent:pointerover /template/ ContentPresenter">
+  <Style Selector=":is(Button).transparent:pointerover /template/ ContentPresenter">
+    <Setter Property="RenderTransform">
+      <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+    </Setter>
+  </Style>
+
+  <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"/>
+    <Setter Property="Background" Value="{DynamicResource PrimaryHoverBackground}"/>
+  </Style>
+
+  <Style Selector=":is(Button).transparent:pointerover /template/ ContentPresenter">
     <Setter Property="Background" Value="Transparent"/>
   </Style>
 
-  <Style Selector="Button.transparent">
+  <Style Selector=":is(Button).transparent">
     <Setter Property="Background" Value="Transparent"/>
+  </Style>
+
+  <Style Selector=":is(Button).active /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
+  </Style>
+
+  <Style Selector=":is(Button)">
+    <Setter Property="FontSize" Value="20"></Setter>
+    <Setter Property="CornerRadius" Value="10"></Setter>
+    <Setter Property="Padding" Value="9,5.5,9.2,5.5"></Setter>
+    <!--NOTE: You can remove the immediate below item. This was done in the
+    video because his font had a bug that was offset improperly-->
+    <!--<Setter Property="Padding" Value="10, 12, 13, 5"/>-->
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+    <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
+  </Style>
+
+    <!--NOTE: This works in conjuction with the rednerdransform below upon hover
+      it increases the size. Can allso be done with a 
+      <Setter Property="RenderTransform" Value="scale(1)"/>-->
+  <Style Selector=":is(Button) /template/ ContentPresenter">
+    <Setter Property="RenderTransform">
+      <ScaleTransform ScaleX="1" ScaleY="1"/>
+    </Setter>
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Foreground" Duration="0:0:0.1"/>
+        <BrushTransition Property="Background" Duration="0:0:0.1"/>
+        <TransformOperationsTransition Property="RenderTransform"  Duration="0:0:0.1"/>
+      </Transitions>
+    </Setter>
   </Style>
 
 </Styles>

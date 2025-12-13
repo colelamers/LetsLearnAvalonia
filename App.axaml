@@ -18,6 +18,15 @@
     </Application.Styles>
 
     <Application.Resources>
+
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="/UserControls/IconButton.axaml"></MergeResourceInclude>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+
         <SolidColorBrush x:Key="PrimaryForeground" Color="#CFCFCF"/>
         <SolidColorBrush x:Key="PrimaryBackground" Color="#14172D"/>
         <LinearGradientBrush x:Key="PrimaryGradientBackground" StartPoint="0%,0%" EndPoint="100%,0%">
